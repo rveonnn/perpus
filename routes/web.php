@@ -5,7 +5,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('login');
+    return view('home');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

@@ -19,9 +19,9 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'nama' => 'require|string',
-            'email' => 'require|email|unique:users',
-            'password' => 'require|min:3|confirmed',
+            'nama' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:3|confirmed',
             'role' => 'sometimes|in:anggota,petugas'
         ]);
         $user = User::create([

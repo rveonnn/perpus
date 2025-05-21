@@ -21,7 +21,7 @@ return new class extends Migration
     // Tambahan field untuk perpustakaan
         $table->text('alamat')->nullable();
         $table->string('nomor_telepon')->nullable();
-        $table->enum('role', ['anggota', 'petugas'])->default('anggota');
+        $table->enum('role', ['Anggota', 'Petugas'])->default('Anggota')->index();
 
         $table->rememberToken();
         $table->timestamps();

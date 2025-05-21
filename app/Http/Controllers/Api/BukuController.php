@@ -13,9 +13,7 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $buku = Buku::paginate(8);
-
-        return response()->json($buku);
+            return response()->json(Buku::all());
     }
 
     /**
@@ -64,10 +62,18 @@ class BukuController extends Controller
      */
     public function destroy(string $id)
     {
-        $buku = Buku::findOrFail($id);
+        $buku = Buku::find($id);
+        if (!$buku) {
+            return response()->json(['message' => 'Buku tidak ditemukan'], 404);
+        }
+
+        // Hapus relasi peminjaman (jika ada)
+        $buku->peminjaman()->delete(); // jika relasi 'peminjaman' ada di model Buku
+
         $buku->delete();
-        return response()->json(['message' => 'Buku dihapus']);
+        return response()->json(['message' => 'Buku berhasil dihapus']);
     }
+
 
 
     public function search($keyword)

@@ -33,12 +33,12 @@ class User extends Authenticatable
     // Helper methods
     public function isAnggota()
     {
-        return $this->role === 'anggota';
+        return $this->role === 'Anggota';
     }
 
     public function isPetugas()
     {
-        return $this->role === 'petugas';
+        return $this->role === 'Petugas';
     }
 
     // Relasi dengan peminjaman

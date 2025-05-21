@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('buku_id')->constrained('buku')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('buku_id')->nullable()->constrained('buku')->onDelete('cascade');
             $table->date('tanggal_peminjaman');
             $table->date('tanggal_pengembalian')->nullable();
             $table->date('tanggal_dikembalikan')->nullable();
-            $table->enum('status', ['belum dikembalikan', 'tepat waktu', 'telat'])->default('belum dikembalikan');
+            $table->enum('status', ['Belum dikembalikan', 'Tepat waktu', 'Telat'])->default('Belum dikembalikan');
             $table->timestamps();
         });
     }

@@ -106,4 +106,12 @@ class PeminjamanController extends Controller
 
         return response()->json($peminjaman);
     }
+
+public function index()
+{
+    $peminjaman = Peminjaman::with(['user', 'buku'])->get();
+    return response()->json($peminjaman);
+}
+
+
 }
